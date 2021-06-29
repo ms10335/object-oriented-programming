@@ -42,8 +42,8 @@ Island* map::getIsland(const Coordinates& position) const {
         auto it = std::find_if(map_.begin(), map_.end(), [&](std::shared_ptr<Island> const& search) {
             return search->getPosition().getPositionX() == position.getPositionX() && search->getPosition().getPositionY() == position.getPositionY();
         });
-        if(it != map_.end()) {
-            return map_[std::distance(map_.begin(),it)].get();
+        if (it != map_.end()) {
+            return map_[std::distance(map_.begin(), it)].get();
         }
     }
     return nullptr;
