@@ -1,6 +1,25 @@
+#pragma once
 #include <iostream>
-#include "cargo.hpp"
 
+class Cargo {
+public:
+    Cargo() = default;
+    Cargo(size_t amount, std::string name, size_t base_price);
+    virtual ~Cargo() = default;
+
+    virtual size_t getPrice() const = 0;
+    virtual std::string getName() const = 0;
+    virtual size_t getAmount() const = 0;
+    virtual size_t getBasePrice() const = 0;
+
+    virtual Cargo& operator+=(size_t amount) = 0;
+    virtual Cargo& operator-=(size_t amount) = 0;
+
+protected:
+    std::string name_;
+    size_t amount_;
+    size_t base_price_;
+};
 class Fruit : public Cargo {
 public:
     Fruit(size_t amount, const std::string& name, size_t base_price, size_t expiry_date, size_t time_elapsed);
